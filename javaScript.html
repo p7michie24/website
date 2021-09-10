@@ -1,0 +1,115 @@
+<html>
+<head>
+<script language="javaScript">
+
+function guessing()
+{
+	/*
+	
+	1. Declare three variables
+						usersGuess (the guess that the user makes)
+						numOfGuess (increases by 1 each time the user makes
+						another guess.)
+	2. Set numOfGuesses to 0.
+	3. Create a random number between 1 and 10. Store this in rand.
+	4. Set usersGuess to -1 (Think about why -1?)
+	5. Create a while loop
+			while (rand != usersGuess) // == tests equality. ! tests if rand does NOT 
+			EQUAL uG
+	6. Inside while,
+		  6a. increase numOfGuesses
+		  6b. prompt the user to input a new guess
+		  6c. if usersGuess is too low, alert this fact.
+		  6d. if usersGuess is too high, alert this.
+	7. After the while, alert that they are correct and how many guesses it took.
+	
+	*/
+	var usersGuess = -1;
+	var numOfGuesses = 0; //camelCase
+	var rand = Math.random()*10 + 1;
+	rand = parseInt(rand);
+	alert(rand);
+	
+	while (rand != usersGuess) // loop while rand does NOT equal usersGuess
+	{
+		usersGuess = prompt("Enter a number between 1-10");
+		numOfGuesses = numOfGuesses +1; // add one to var
+										// numOfGuesses++;
+		if(usersGuess < rand)
+		{
+			alert("Your guess it too low.");
+		}
+		else if(usersGuess > rand)
+		{
+			alert("Your guess it too high.");
+		}
+	}
+	// User has got the correct answer.
+	
+	alert("You took "+numOfGuesses+" tries to guess the right answer!");
+	
+}
+
+function greeting()
+{
+	alert("high five ✋");
+}
+function greeting2()
+{
+	// var declares a variable. Use var only once per variable.
+	// 1st time a variable is assigned data is called "initialize"
+	var response = prompt("Type your name"); // = is the assignment operator
+	alert("Hello there, "+response);
+}                                        // This assigns the element on the right to
+                                         // the element on the left
+										 
+										 
+										 
+function greeting3()
+{
+	var name = confirm("Do you like my site?"); // = is the assignment operator
+	alert(name);
+}
+</script>
+</head>
+<body background="images/bkgnd1.gif">
+<font color = "#FFFFFF" face="Lucida Sans">
+<center>
+<h1> My First JavaScript Page </h1>
+
+<img src="images/mrburan.jfif" width="200" />
+
+</center>
+<font face="Arial"> <size="3">
+<center>
+Click <a href="index.html"> here </a> to go home.
+</center>
+<br/><br/>
+<hr/>
+<center>
+<input type="button" value="Click for my game" onclick="guessing()" />
+<hr/>
+
+<center>
+<input type="button" value="Click for a high five" onclick="greeting()" />
+<hr/>
+
+</center>
+<hr/>
+
+<center>
+<input type="button" value="Click for question" onclick="greeting2()" />
+
+</center>
+<hr/>
+
+<center>
+<input type="button" value="Click for a confirmation" onclick="greeting3()" />
+<hr/>
+
+</center>
+
+
+
+</body>
+</html>
