@@ -1,0 +1,95 @@
+<html>
+<head>
+<script language = "javaScript">
+var counter = 0;
+var picList = ["images/slideshow/slide1.jpg",
+			   "images/slideshow/slide2.jpg",
+			   "images/slideshow/slide3.jpg",
+			   "images/slideshow/slide4.jpg",
+			   "images/slideshow/slide5.jpg",
+			   "images/slideshow/slide6.jpg"   ];
+var clipList = ["sounds/monkey.mp3",
+			    "sounds/science.mp3",
+			    "sounds/ping.mp3",
+			    "sounds/violin.mp3",
+			    "sounds/obama.mp3",
+			    "sounds/explosion.mp3"   ];
+				
+var timer;
+
+var autoStart = false;
+
+function nextPic()
+{
+	counter++;
+	document.getElementById("display").src = picList[counter];
+	document.getElementById("player").src = clipList[counter];
+	document.getElementById("player").play();
+	incrementCounter();
+}
+
+function incrementCounter()
+{
+	if (counter == picList.length-1)
+	{
+	counter=-1;
+	}
+}
+
+function run()
+{
+	if( autoStart == false)
+	{
+		autoStart = true;
+		document.getElementById("runButton").value = "Pause Slideshow";
+	}
+	else
+	{
+		autoStart = false;
+		document.getElementById("runButton").value = "Run Slideshow";
+	}
+
+	autoPlay();
+} 
+
+function autoPlay()
+{
+	if( autoStart == true)
+	{
+		nextPic();
+		var clipTime = clipList[counter].length;
+		timer = setTimeout( "autoPlay()" , clipTime*1000 )
+	}
+	else
+	{
+		clearTimeout(timer);
+	}
+}
+
+</script>
+
+</head>
+<body bgcolor="#99FF66">
+
+<font color = "#663300" face="Lucida Sans">
+<center>
+<h1> My Slideshow </h1>
+Click <a href="index.html"> here</a> to return to my home page.
+
+<br/><br/>
+
+<input type="button" value= "Next Picture" onclick="nextPic()"/>
+<input type="button" value= "Run Slideshow" onclick="run()" id="runButton"/>
+
+<br/><br/>
+
+<img src="images/slideshow/slide1.jpg" id="display" />
+
+<audio id="player"></audio>
+
+</center>
+
+
+</font>
+</body>
+</html>
